@@ -1,19 +1,22 @@
 function realization(n)
-	# n determines how many trials are used. Larger numbers should be more accurate.
-	x = [0]
+	array = Int64[]
 	for i in 1:n
-		if rand() < (1-rand()^2)^(1/2)
-			push!(x, 1)
-		else
-			push!(x, 0)
-			
+		for counter in 1:10
+			if rand() > 0.5
+				push!(array, 1)
+			else
+				push!(array, 0)
+			end
 		end
 	end
-	return mean(x) * 4
-
+#	end
+	for i in 3:10
+		if array[i] == array[i - 1] == array[i - 2]
+			return 1
+		else 
+			return 0
+		end
+	end
 end
 
-pi_approximation(1000000)
-
-#TESTING
-#pi_approximation(1000000) / pi
+realization(1)
